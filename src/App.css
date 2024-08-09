@@ -3,6 +3,7 @@ body {
     background-color: #101830;
     text-align: center;
     padding: 50px;
+    border: none;
   }
   
   input {
@@ -32,6 +33,7 @@ body {
     margin-bottom: 20px;
     font-family: 'Segoe UI';
     color: #e2e2e2;
+    border: none;
   }
   
   h2 {
@@ -39,6 +41,7 @@ body {
     margin: 20px 0;
     font-family: 'Segoe UI';
     color: #e2e2e2;
+    border: none;
   }
 
   p{
@@ -46,4 +49,5 @@ body {
     font-family: 'Segoe UI';
     font-weight: 800;
     font-size: 20px;
+    border: none;
   }

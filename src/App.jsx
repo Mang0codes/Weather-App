@@ -5,19 +5,21 @@ import './App.css'
 function App() {
   const [weather, setWeather] = useState(null);
   const[location, setLocation] = useState('');
-  const[loading, setLoading] = useState(true);
-  const API_KEY = '15cac912a0eca4539ed43cf41d2495d7';
+  const[loading, setLoading] = useState(false);
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   const fetchWeather = async () => {
     setLoading(true);
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=metric`);
-    const data = await response.json();
-    setWeather(data);
-    if(location != ''){
-      setLoading(false);
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=metric`);
+      const data = await response.json();
+      setWeather(data);
+    } catch (error) {
+      console.error('Error fetching the weather data:', error);
     }
-    setLoading(true);
+    setLoading(false);
   }
+
   return (
     <div>
       <h1>Weather App</h1>
@@ -37,7 +39,7 @@ function App() {
             <p>Humidity: {weather.main.humidity}%</p>
           </div>
         ) : (
-          <p>unknown location...No data found</p>
+          <p>No data found...</p>
         )
       }
     </div>
